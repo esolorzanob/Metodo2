@@ -4,10 +4,9 @@ angular.module('ResourceApp', [
   'ngStorage',
   'appRoutes',
   'enterStroke',
-  'MainController',
-  'TodoController',
+  'MainController',  
   'UserController',
-  'UserService',
-  'TodoService',
+  'UserService'
+  
 ]);
 

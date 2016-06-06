@@ -2,5 +2,5 @@
     Hello {{authenticatedUser.username}}, thank you for installing me.
 </p>
 <p ng-if="!authenticatedUser">
-    Hello guest, thank you for installing me.
+    Hello guest, thank you for installing me. <i class="fa fa-envira" aria-hidden="true"></i>
 </p>

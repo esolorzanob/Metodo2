@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mailgun',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'sandboxa1912c6eff284c458a5c7f9678dbc185.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => 'esteban.solorzanolds@gmail.com', 'name' => 'Esteban'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return [
 	| connection so that the application will be able to send messages.
 	|
 	*/
-
+	
 	'password' => null,
 
 	/*

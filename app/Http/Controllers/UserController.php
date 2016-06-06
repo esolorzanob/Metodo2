@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use ResourceApp\Http\Requests;
 use ResourceApp\User;
 use Tymon\JWTAuth\JWTAuth;
+use Mail;
 
 class UserController extends Controller
 {

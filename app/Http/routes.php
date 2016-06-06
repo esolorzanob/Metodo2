@@ -32,7 +32,7 @@ Route::post('/api/user/login', 'UserController@login');
 Route::get('/api/user/getByToken', 'UserController@getByToken');
 
 // Getting RESTful
-Route::resource('/api/todo', 'TodoController');
+
 Route::resource('/api/user', 'UserController');
 
 // Catch all undefined routes. Always gotta stay at the bottom since order of routes matters.
