@@ -1,4 +1,4 @@
-<?php namespace Todo\Http\Controllers;
+<?php namespace ResourceApp\Http\Controllers;
 
 class HomeController extends Controller {
 

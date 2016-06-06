@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Todo
-        psr4_prefix: Todo
+        namespace: ResourceApp
+        psr4_prefix: ResourceApp
         src_path: app

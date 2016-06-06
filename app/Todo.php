@@ -1,4 +1,4 @@
-<?php namespace Todo;
+<?php namespace ResourceApp;
 
 use Illuminate\Database\Eloquent\Model;
 

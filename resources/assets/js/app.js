@@ -1,4 +1,4 @@
-angular.module('todoApp', [
+angular.module('ResourceApp', [
   'ngRoute',
   'ngResource',
   'ngStorage',

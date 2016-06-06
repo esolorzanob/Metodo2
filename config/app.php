@@ -140,11 +140,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'Todo\Providers\AppServiceProvider',
-		'Todo\Providers\BusServiceProvider',
-		'Todo\Providers\ConfigServiceProvider',
-		'Todo\Providers\EventServiceProvider',
-		'Todo\Providers\RouteServiceProvider',
+		'ResourceApp\Providers\AppServiceProvider',
+		'ResourceApp\Providers\BusServiceProvider',
+		'ResourceApp\Providers\ConfigServiceProvider',
+		'ResourceApp\Providers\EventServiceProvider',
+		'ResourceApp\Providers\RouteServiceProvider',
 
 		/*
 		 * JSON Web Token (Authentication)

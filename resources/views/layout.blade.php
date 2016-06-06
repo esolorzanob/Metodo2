@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/app.css"/>
     <link rel="stylesheet" href="<% elixir('css/all.css') %>"/>
 </head>
-<body ng-app="todoApp" ng-controller="MainController" ng-init="getAuthenticatedUser()">
+<body ng-app="ResourceApp" ng-controller="MainController" ng-init="getAuthenticatedUser()">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">

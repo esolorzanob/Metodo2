@@ -1,9 +1,9 @@
-<?php namespace Todo\Providers;
+<?php namespace ResourceApp\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Hash;
-use Todo\User;
+use ResourceApp\User;
 
 class EventServiceProvider extends ServiceProvider
 {

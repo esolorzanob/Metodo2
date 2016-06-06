@@ -1,4 +1,4 @@
-<?php namespace Todo\Exceptions;
+<?php namespace ResourceApp\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

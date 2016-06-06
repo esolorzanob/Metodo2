@@ -1,8 +1,8 @@
-<?php namespace Todo\Http\Controllers;
+<?php namespace ResourceApp\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Todo\Http\Requests;
-use Todo\Todo;
+use ResourceApp\Http\Requests;
+use ResourceApp\Todo;
 
 class TodoController extends Controller
 {
