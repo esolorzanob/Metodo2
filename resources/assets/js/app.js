@@ -6,6 +6,8 @@ angular.module('ResourceApp', [
   'enterStroke',
   'MainController',  
   'UserController',
+  'RecursoController',
+  'RecursoService',
   'UserService'
   
 ]);
