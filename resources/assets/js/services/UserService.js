@@ -1,10 +1,12 @@
 angular.module('UserService', []).factory('User', ['$resource',
   function ($resource) {
     return $resource('/api/user/:userId', {
-      userId: '@id'
+      userId: '@id',
+      usuario: '@usuario'
     }, {
-      update: {
-        method: 'PUT'
+      updateAll: {
+        method: 'POST',
+        url: 'api/user/updateAll'
       },
       login: {
         method: 'POST',
@@ -13,6 +15,10 @@ angular.module('UserService', []).factory('User', ['$resource',
       getByToken: {
         method: 'GET',
         url: '/api/user/getByToken'
+      },
+      delete: {
+        method: 'POST',
+        url: 'api/user/delete',
       }
     });
   }

@@ -1,4 +1,4 @@
-<form name="loginForm" ng-controller="UserController" ng-submit="createNew()"
+<form name="loginForm" ng-controller="UserController" ng-submit="edit()" ng-init="findOne()"
       class="form-horizontal" >
       <p>Por favor ingrese la información para la creación del usuario. Todos los campos son requeridos**</p>
       <br>
@@ -69,7 +69,7 @@
     <div class="form-group">
          <div class="col-md-2">
               <i class="fa fa-transgender-alt icono" aria-hidden="true"></i>
-            <label>Genero:</label>
+            <label>Género:</label>
           
         </div>
         <div class="col-md-3">
@@ -104,40 +104,15 @@
         </div>
         <div class="col-md-3">
             <input type="text" id="carrera" ng-model="usuario.carrera"
-                   class="form-control" placeholder="" required>
+                   class="form-control" placeholder="" >
         </div>
        
     </div>
-    <div class="form-group">
-         <div class="col-md-2">
-               <i class="fa fa-key  icono" aria-hidden="true"></i>
-            <label>Contraseña:</label>
-          
-        </div>
-        <div class="col-md-3">
-            <input type="password" name="password" id="password" ng-model="usuario.password"
-                   class="form-control" placeholder="" required>
-        </div>
-         <div class="col-md-6">
-          <p ng-show="loginForm.password.$dirty">La contraseña debe tener al menos 8 caractéres, una mayuscula y un número</p>
-        </div>
-    </div>
-    <div class="form-group">
-         <div class="col-md-2">
-            <i class="fa fa-key  icono" aria-hidden="true"></i>
-            <label>Confirme contraseña:</label>
-          
-        </div>
-        <div class="col-md-3">
-            
-            <input type="password" id="passwordConfirmation" ng-model="usuario.passwordConfirmation"
-                   class="form-control" placeholder="" required>
-        </div>
-       
+    
     </div>
     <div class="form-group">
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
         </div>
     </div>
     <h3 class="error">{{error}}<h3>

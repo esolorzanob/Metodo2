@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['username', 'email', 'password'];
+    protected $fillable = ['username', 'email', 'password', 'nombre', 'apellido1', 'apellido2', 'genero', 'rol', 'carnet', 'cedula', 'carrera'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,9 +40,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @param string $password Plain text password
      * @return bool|user The user if the password matches the user's stored password, false otherwise.
      */
-    public function authenticate($username, $password)
+    public function authenticate($email, $password)
     {
-        $user = User::where('username', $username)->first();
+        $user = User::where('email', $email)->first();
         if (!Hash::check($password, $user->password)) {
             return false;
         }

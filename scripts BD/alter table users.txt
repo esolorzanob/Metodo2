@@ -1,0 +1,11 @@
+ALTER TABLE `test`.`users` 
+CHANGE COLUMN `change_password` `change_password` VARCHAR(40) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL COMMENT '' ,
+CHANGE COLUMN `remember_token` `remember_token` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL COMMENT '' ,
+ADD COLUMN `nombre` VARCHAR(45) NULL COMMENT '' AFTER `username`,
+ADD COLUMN `apellido1` VARCHAR(45) NULL COMMENT '' AFTER `nombre`,
+ADD COLUMN `apellido2` VARCHAR(45) NULL COMMENT '' AFTER `apellido1`,
+ADD COLUMN `genero` VARCHAR(45) NULL COMMENT '' AFTER `password`,
+ADD COLUMN `carnet` VARCHAR(45) NULL COMMENT '' AFTER `genero`,
+ADD COLUMN `cedula` VARCHAR(45) NULL COMMENT '' AFTER `carnet`,
+ADD COLUMN `carrera` VARCHAR(45) NULL COMMENT '' AFTER `cedula`,
+ADD COLUMN `rol` VARCHAR(45) NOT NULL COMMENT '' AFTER `carrera`;

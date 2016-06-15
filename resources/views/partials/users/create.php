@@ -1,5 +1,5 @@
-<form name="loginForm" ng-controller="UserController" ng-submit="createNew()"
-      class="form-horizontal" >
+<form name="createForm" ng-controller="UserController" ng-submit="create()"
+      class="form-horizontal">
       <p>Por favor ingrese la información para la creación del usuario. Todos los campos son requeridos**</p>
       <br>
       <div class="form-group">
@@ -9,7 +9,7 @@
           
         </div>
         <div class="col-md-3">
-             <select id="rol" ng-model="usuario.rol" 
+             <select name="rol" id="rol" ng-model="usuario.rol" 
                    class="form-control" required>
                    <option></option>
                    <option>Estudiante</option>
@@ -25,7 +25,7 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="nombre" ng-model="usuario.nombre"
+            <input type="text" name="nombre" id="nombre" ng-model="usuario.nombre"
                    class="form-control" placeholder="" required>
         </div>      
        
@@ -37,7 +37,7 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="apelldio1" ng-model="usuario.apellido1"
+            <input type="text" name="apellido1" id="apelldio1" ng-model="usuario.apellido1"
                    class="form-control" placeholder="" required>
         </div>      
        
@@ -49,7 +49,7 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="apellido2" ng-model="usuario.apellido2"
+            <input type="text" name="apellido2" id="apellido2" ng-model="usuario.apellido2"
                    class="form-control" placeholder="" required>
         </div>      
         
@@ -61,7 +61,7 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="email" ng-model="usuario.email"
+            <input type="text" name="email" id="email" ng-model="usuario.email"
                    class="form-control" placeholder="" required>
         </div>
        
@@ -69,11 +69,11 @@
     <div class="form-group">
          <div class="col-md-2">
               <i class="fa fa-transgender-alt icono" aria-hidden="true"></i>
-            <label>Genero:</label>
+            <label>Género:</label>
           
         </div>
         <div class="col-md-3">
-            <select id="genero" ng-model="usuario.genero" 
+            <select name="genero" id="genero" ng-model="usuario.genero" 
                    class="form-control" required>
                    <option></option>
                    <option>Masculino</option>
@@ -91,7 +91,7 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="carnet" ng-model="usuario.carnet"
+            <input type="text" name="carnet" id="carnet" ng-model="usuario.carnet"
                    class="form-control" placeholder="" required>
         </div>
        
@@ -103,8 +103,8 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="carrera" ng-model="usuario.carrera"
-                   class="form-control" placeholder="" required>
+            <input type="text" name="carrera" id="carrera" ng-model="usuario.carrera"
+                   class="form-control" placeholder="" >
         </div>
        
     </div>
@@ -130,15 +130,16 @@
         </div>
         <div class="col-md-3">
             
-            <input type="password" id="passwordConfirmation" ng-model="usuario.passwordConfirmation"
+            <input type="password" name="confirm" id="passwordConfirmation" ng-model="usuario.passwordConfirmation"
                    class="form-control" placeholder="" required>
         </div>
        
     </div>
     <div class="form-group">
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
         </div>
     </div>
-    <h3 class="error">{{error}}<h3>
+    <h2 class="error">{{error}}</h3>
+    <h2 class="success">{{message}}</h2>
 </form>

@@ -30,7 +30,7 @@ class UserController extends Controller
     public function login()
     {
         $user = $this->user->authenticate(
-            $this->req->input('username'), $this->req->input('password'));
+            $this->req->input('email'), $this->req->input('password'));
         if (!$user) {
             return $this->res->json([
                 'code' => null,
@@ -60,7 +60,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+       $users = User::all();
+       return $users;
     }
 
     /**
@@ -116,10 +117,26 @@ class UserController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function updateAll()
     {
-        //
-    }
+         $response = new \stdClass();
+        $user = User::find($this->req->usuario['id']);   
+        $user->rol = $this->req->usuario['rol'];
+        $user->nombre = $this->req->usuario['nombre'];
+        $user->apellido1 = $this->req->usuario['apellido1'];
+        $user->apellido2 = $this->req->usuario['apellido2'];
+        $user->email = $this->req->usuario['email'];
+        $user->genero = $this->req->usuario['genero'];
+        $user->carnet = $this->req->usuario['carnet'];
+        $user->carrera = $this->req->usuario['carrera'];
+         if (!$user->save()) {
+             $response->message = "Error al salvar información";
+        }else{
+            $response->message = "La información fue guardada con éxito";
+                      
+        }
+         return json_encode($response); 
+    }   
 
     /**
      * Remove the specified resource from storage.
@@ -127,9 +144,11 @@ class UserController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete()
     {
-        //
+        $user = User::find($this->req->userId);
+        $user->delete();
+        
     }
 
 }

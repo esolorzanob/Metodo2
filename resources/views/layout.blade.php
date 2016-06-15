@@ -25,9 +25,9 @@
         <a href="/"><img class="logo" src="/images/logo2.png" style="float:left;"></a>
         <div id="navbar" class="navbar-collapse collapse" >
             <ul class="nav navbar-nav">               
-                <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/signup')}"><a href="/auth/signup"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Sign Up</a></li>
-                <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/login')}"><a href="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Log in</a></li>
-                <li ng-if="authenticatedUser != null" ng-class="{active:isActive('/users/view/' + authenticatedUser.id)}"><a ng-href="/users/view/{{authenticatedUser.id}}">{{authenticatedUser.username}}</a></li>
+                <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/signup')}"><a href="/auth/signup"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Registrarse</a></li>
+                <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/login')}"><a href="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Ingresar</a></li>
+                <li ng-if="authenticatedUser != null" ng-class="{active:isActive('/users/view/' + authenticatedUser.id)}"><a ng-href="/users/view/{{authenticatedUser.id}}">{{authenticatedUser.nombre}}</a></li>
                 <li ng-if="authenticatedUser != null" ng-click="logout()"><a ng-href="#">Log out</a></li>
             </ul>
         </div>

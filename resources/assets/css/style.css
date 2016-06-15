@@ -1,5 +1,5 @@
 body {
-    padding-top: 70px;
+    padding-top: 20px;
     padding-bottom: 30px;
 }
 .main{
@@ -7,10 +7,13 @@ body {
 }
 .footer{
   position: relative;
-  margin-top: 20%; /* negative value of footer height */
+  margin-top: 25%; /* negative value of footer height */
  text-align: center;
   clear:both;
-  padding-top:20px;
+  padding-top:30px;
+  background-color: #016839;
+  color: white;
+  height: 120px;
 }
 #main {
   
@@ -25,6 +28,25 @@ body {
     padding-right: 55%;
 }
 
-.lcoo{
+.error{
   color: red;
+}
+.icono{
+  color: #7aba1e;
+}
+.tituloOpcion{
+  font-size: 2em;
+}
+.opcion{
+  font-size: 1.5em;
+}
+td.opcionList {
+  text-align: center;
+}
+.opcionList > a{
+  text-decoration: none;
+  color: #7aba1e;
+}
+.success{
+  color: #7aba1e;
 }

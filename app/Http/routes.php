@@ -30,7 +30,8 @@ Route::get('/partials/{category}/{action}/{id}', function ($category, $action = 
 // Additional RESTful routes.
 Route::post('/api/user/login', 'UserController@login');
 Route::get('/api/user/getByToken', 'UserController@getByToken');
-
+Route::post('/api/user/updateAll', 'UserController@updateAll');
+Route::post('/api/user/delete', 'UserController@delete');
 // Getting RESTful
 
 Route::resource('/api/user', 'UserController');
