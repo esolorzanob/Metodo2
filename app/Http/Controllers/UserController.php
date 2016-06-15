@@ -119,7 +119,7 @@ class UserController extends Controller
      */
     public function updateAll()
     {
-         $response = new \stdClass();
+        $response = new \stdClass();
         $user = User::find($this->req->usuario['id']);   
         $user->rol = $this->req->usuario['rol'];
         $user->nombre = $this->req->usuario['nombre'];
@@ -150,5 +150,62 @@ class UserController extends Controller
         $user->delete();
         
     }
+    
+     public function getByEmail(){
+        $email = $this->req->email;        
+        $user = $user = User::where('email',$email)->get();          
+        return $user;
+    }
+    
+     public function resetPassword(){
+       $pass = $this->req->password; 
+       $user = User::find($this->req->userId);       
+      $this->updatePassword($user, $pass);
+           
+        $data = array('pass' => $pass);
+        if (Mail::send('password-view', ['pass' => $pass], function($message) use ($data)
+        {
+        $message->to('esolorzano@renovatiocloud.com', 'Admin')->subject('Password Reset');
+        })){
+            $response = new \stdClass();
+            $response->message = "La contraseña temporal se ha enviado a su correo";
+           return json_encode($response); 
+        }else {
+           $response = new \stdClass();
+            $response->message = "Se produjo un error al enviar la contraseña, por favor revise el email escrito";
+           return json_encode($response); 
+        }
+       
+    }
+    
+      public function updatePassword($user, $pass)
+    {   
+        $user->change_password = "Yes";
+        $user->password = \Hash::make($pass);
+        if (!$user->save()) {
+            abort(500, "Saving failed");
+        }
+        return $user;  
+    }
+    
+      public function changePassword(){
+        $id = $this->req->userId;
+        $pass = $this->req->password;
+        $user = User::find($id);
+        $user->password = \Hash::make($pass);
+        $user->change_password = "No";
+         if (!$user->save()) {
+           $response = new \stdClass();
+            $response->message = "Se produjo un error al cambiar su contraseña.";
+           return json_encode($response); 
+        }else{
+             $response = new \stdClass();
+            $response->message = "Su contraseña se cambió con éxito, pronto será redirigido.";
+           return json_encode($response);
+        }
+        
+    }
+    
+    
 
 }

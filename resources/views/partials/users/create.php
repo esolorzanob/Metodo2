@@ -1,5 +1,6 @@
-<form name="createForm" ng-controller="UserController" ng-submit="create()"
-      class="form-horizontal">
+<div class="container" ng-controller="UserController"  ng-init="getUser()">
+    <form name="createForm"  ng-submit="create()"
+      class="form-horizontal" ng-show="authenticatedUser.rol == 'Admin'">
       <p>Por favor ingrese la información para la creación del usuario. Todos los campos son requeridos**</p>
       <br>
       <div class="form-group">
@@ -143,3 +144,6 @@
     <h2 class="error">{{error}}</h3>
     <h2 class="success">{{message}}</h2>
 </form>
+<h1 class="error" ng-show="authenticatedUser.rol != 'Admin'">No esta autorizado para ver esta información.</h1>
+    
+</div>

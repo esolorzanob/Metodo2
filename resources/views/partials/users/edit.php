@@ -1,4 +1,5 @@
-<form name="loginForm" ng-controller="UserController" ng-submit="edit()" ng-init="findOne()"
+<div class="container" ng-controller="UserController" ng-init="findWithAuthenticate()">
+    <form name="loginForm"  ng-submit="edit()" ng-show="show"
       class="form-horizontal" >
       <p>Por favor ingrese la información para la creación del usuario. Todos los campos son requeridos**</p>
       <br>
@@ -109,7 +110,7 @@
        
     </div>
     
-    </div>
+    
     <div class="form-group">
         <div class="col-md-4">
             <button type="submit" class="btn btn-primary">Editar</button>
@@ -117,3 +118,5 @@
     </div>
     <h3 class="error">{{error}}<h3>
 </form>
+<h1 class="error" ng-show="!show">{{message}}</h1>
+</div>

@@ -1,4 +1,5 @@
 <div ng-controller="UserController" ng-init="findAll()">
+    
      <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
         
@@ -18,8 +19,8 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
         </div>
     </script>
-    
-<h2> Lista de Usuarios</h2>
+    <div class="container" ng-show="show">
+        <h2> Lista de Usuarios</h2>
 <input type="text" placeholder="Buscar por nombre" ng-model="filtro.nombre"  />
 <input type="text" placeholder="Buscar por email" ng-model="filtro.email"  />
         <select name="genero" ng-model="filtro.genero">
@@ -61,4 +62,6 @@
           <td class="opcionList"><a href="javascript:void(0)" ng-click="open(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
     </table>
     <p class="success">{{message}}</p>
+    </div>
+    <h1 class="error" ng-show="!show">{{message}}</h1>
 </div>

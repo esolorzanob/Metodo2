@@ -2,7 +2,9 @@ angular.module('UserService', []).factory('User', ['$resource',
   function ($resource) {
     return $resource('/api/user/:userId', {
       userId: '@id',
-      usuario: '@usuario'
+      usuario: '@usuario',
+      email: '@email',
+      password: '@password'
     }, {
       updateAll: {
         method: 'POST',
@@ -19,6 +21,19 @@ angular.module('UserService', []).factory('User', ['$resource',
       delete: {
         method: 'POST',
         url: 'api/user/delete',
+      },
+      getByEmail: {
+        method: 'GET', 
+        isArray: true,                  
+        url: '/api/user/getByEmail'
+      },
+       resetPassword: {
+        method: 'POST',              
+        url: '/api/user/resetPassword'
+      },
+      changePassword: {
+        method: 'POST',              
+        url: '/api/user/changePassword'
       }
     });
   }

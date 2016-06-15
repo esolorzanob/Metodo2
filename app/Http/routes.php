@@ -32,6 +32,9 @@ Route::post('/api/user/login', 'UserController@login');
 Route::get('/api/user/getByToken', 'UserController@getByToken');
 Route::post('/api/user/updateAll', 'UserController@updateAll');
 Route::post('/api/user/delete', 'UserController@delete');
+Route::post('/api/user/resetPassword', 'UserController@resetPassword');
+Route::post('/api/user/changePassword', 'UserController@changePassword');
+Route::get('/api/user/getByEmail', 'UserController@getByEmail');
 // Getting RESTful
 
 Route::resource('/api/user', 'UserController');

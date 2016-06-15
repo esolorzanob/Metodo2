@@ -23,9 +23,14 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
+         <div class="col-md-4">
+         
+        </div>
+        
     </div>
+     <a href="/auth/forgot">Olvidó su contraseña?</a>
     <h3 class="error">{{error}}</h3>
 </form>
