@@ -9,6 +9,8 @@ angular.module('ResourceApp', [
   'UserController',
   'RecursoController',
   'RecursoService',
+  'SolicitudController',
+  'SolicitudService',
   'UserService',
   'ui.bootstrap',
   'ModalInstanceController'

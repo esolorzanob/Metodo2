@@ -36,6 +36,7 @@ Route::post('/api/user/delete', 'UserController@delete');
 
 Route::resource('/api/user', 'UserController');
 Route::resource('api/recurso', 'RecursoController');
+Route::resource('api/solicitud', 'SolicitudController');
 
 // Catch all undefined routes. Always gotta stay at the bottom since order of routes matters.
 Route::any('{undefinedRoute}', function ($undefinedRoute) {

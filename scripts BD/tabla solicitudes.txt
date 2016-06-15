@@ -1,0 +1,17 @@
+CREATE TABLE `solicitudes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `idGrupoSolicitudes` varchar(255) DEFAULT NULL COMMENT 'Pueden haber varias solicitudes relacionadas a un mismo grupo de solicitud',
+  `idSolicitante` varchar(255) NOT NULL COMMENT 'Usuario estudiante o docente que crea la solicitud. ',
+  `idHorario` varchar(255) DEFAULT NULL,
+  `idAdmin` varchar(255) DEFAULT NULL COMMENT 'Usuario que deniega la solicitud, si no fue denegada, el campo será nulo. ',
+  `idAula` varchar(255) NOT NULL COMMENT 'Aula en la cuál será utilizado el recurso. ',
+  `fechaCreacion` varchar(255) NOT NULL COMMENT 'Momento en el que es creada la solicitud',
+  `recursosDevueltos` varchar(255) DEFAULT '0' COMMENT '1: ya fueron devueltos todos los recursos. 0: Hay recursos pendientes por devolver',
+  `tipo` varchar(255) DEFAULT 'regular' COMMENT 'Extraordinaria: Fuera del horario que tiene asignado el usuario. ',
+  `estado` varchar(255) DEFAULT 'pendiente' COMMENT 'Pendiente: Creada por el usuario pero aún no ha sido dada al usuario.\nEntregada: Recursos en manos del usuario.\nFinalizada: Los recursos fueron devueltos. \nCancelada: Cancelada por parte del usuario solicitante.\nDenegada: El usuario administrador denegó l',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='	';
+
