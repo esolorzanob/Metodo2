@@ -105,7 +105,7 @@
         </div>
         <div class="col-md-3">
             <input type="text" id="carrera" ng-model="usuario.carrera"
-                   class="form-control" placeholder="" required>
+                   class="form-control" placeholder="" >
         </div>
        
     </div>

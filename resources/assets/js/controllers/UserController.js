@@ -82,7 +82,7 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
 
     //Funcion para traer todos los usuarios
     $scope.findAll = function () {
-       $scope.getUser();
+      $scope.getUser();
       var splitPath = $location.path().split('/');
       var userId = splitPath[splitPath.length - 1];
       $scope.usuario = User.get({ userId: userId }, function (user) {
@@ -104,10 +104,11 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
     $scope.edit = function () {
       User.updateAll({ usuario: $scope.usuario }, function (response) {
         $scope.error = response.message;
+        /*
         $timeout(function () {
-          $location.path('users/list/');
+          $location.path('users/list');
         }, 2000);
-
+        */
       });
     }
 
