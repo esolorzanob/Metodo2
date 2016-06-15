@@ -7,6 +7,8 @@
     <script type="application/javascript" src="<% elixir('js/all.js') %>"></script>
     <link rel="stylesheet" href="/css/app.css"/>
     <link rel="stylesheet" href="<% elixir('css/all.css') %>"/>
+    <link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/footer-basic-centered.css">
 </head>
 <body ng-app="ResourceApp" ng-controller="MainController" ng-init="getAuthenticatedUser()">
 
@@ -41,13 +43,22 @@
 
 </div>
 </div>
-<footer class="footer">
- Universidad Latina de Costa Rica 
- <br>
-BSI-508 Metodología de Desarrollo de Software 2
-<br> 
-© 2016 Grupo 1  
-</footer>
+<footer class="footer-basic-centered">
+
+			<p class="footer-company-motto">Universidad Latina de Costa Rica</p>
+
+			<p class="footer-links">
+				<a href="/">Principal</a>
+				·
+				<a href="/auth/login">Ingresar</a>
+				·
+				<a href="/auth/signup">Registrarse</a>				
+				
+			</p>
+
+			<p class="footer-company-name">Metodologías de Desarrollo 2 - grupo1 &copy; 2015</p>
+
+		</footer>
 </body>
 
 </html>

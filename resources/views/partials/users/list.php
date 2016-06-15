@@ -36,7 +36,7 @@
 			<option>Estudiante</option>
 			<option>Profesor</option>			                              
 		</select>
-      <table class="table-bordered table-striped table-hover" >
+      <table class="table-responsive table-bordered table-striped table-hover" style="overflow-x:auto;">
        <tr>
         <th>Id</th>
         <th>Rol</th>

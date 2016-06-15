@@ -1,4 +1,5 @@
-<form name="loginForm" ng-controller="UserController" ng-submit="login()"
+<div class="container">
+  <form name="loginForm" ng-controller="UserController" ng-submit="login()"
       class="form-horizontal" novalidate>
     <div class="form-group">
          <div class="col-md-2">
@@ -33,4 +34,6 @@
     </div>
      <a href="/auth/forgot">Olvidó su contraseña?</a>
     <h3 class="error">{{error}}</h3>
-</form>
+</form>  
+</div>
+
