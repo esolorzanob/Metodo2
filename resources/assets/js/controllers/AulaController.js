@@ -1,41 +1,40 @@
-angular.module('RecursoController', []).controller('RecursoController', ['$scope', '$location', '$routeParams', 'Recurso', 'User', '$uibModal', '$timeout',
-  function ($scope, $location, $routeParams, Recurso, User, $uibModal, $timeout) {
+angular.module('AulaController', []).controller('AulaController', ['$scope', '$location', '$routeParams', 'Aula', 'User', '$uibModal', '$timeout',
+  function ($scope, $location, $routeParams, Aula, User, $uibModal, $timeout) {
     $scope.create = function () {
-      var recurso = new Recurso($scope.recurso);
-      recurso.$save(function (res) {
-        //  $location.path('recursos/view/' + res.id);
-        $scope.message = "El recurso se ha creado con éxito";
+      var aula = new Aula($scope.aula);
+      aula.$save(function (res) {
+      //  $location.path('aulas/view/' + res.id);
+       $scope.message = "El aula se ha creado con éxito";
       }, function (err) {
         console.log(err);
       });
     };
 
-    $scope.findAll = function () {
-      $scope.getUser();
+     $scope.findAll = function () {
+       $scope.getUser();
       var splitPath = $location.path().split('/');
       var userId = splitPath[splitPath.length - 1];
       $scope.usuario = User.get({ userId: $scope.authenticatedUser.id }, function (user) {
-        if ($scope.authenticatedUser.rol != "Admin") {
+        if ($scope.authenticatedUser.rol != "Admin"){
           $scope.show = false;
           $scope.message = "No esta autorizado para ver esta información."
-
-        } else {
+         
+        }else{
           $scope.show = true;
-          $scope.recursos = Recurso.query();
+           $scope.aulas = Aula.query();
         }
-
+      
       });
-
+     
 
     };
-    
-
-    $scope.remove = function (recurso) {
-      recurso.$remove(function (res) {
+           
+    $scope.remove = function (aula) {
+      aula.$remove(function (res) {
         if (res) {
-          for (var i in $scope.recursos) {
-            if ($scope.recursos[i] === recurso) {
-              $scope.recursos.splice(i, 1);
+          for (var i in $scope.aulas) {
+            if ($scope.aulas[i] === aula) {
+              $scope.aulas.splice(i, 1);
             }
           }
         }
@@ -44,23 +43,22 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
       })
     };
 
-    $scope.update = function (recurso) {
-      recurso.$update(function (res) {
+    $scope.update = function (aula) {
+      aula.$update(function (res) {
       }, function (err) {
         console.log(err);
       });
     };
-
-    $scope.edit = function () {
-      Recurso.updateAll({ recurso: $scope.recurso }, function (response) {
-        if (response.match(/error/i)){
+    
+     $scope.edit = function () {
+      Aula.updateAll({ aula: $scope.aula }, function (response) {
+       if (response.match(/error/i)){
           $scope.error = response.message;
         }else{
           $scope.message = response.message;
         }
-        
         $timeout(function () {
-          $location.path('recurso/list/');
+          $location.path('aula/list/');
         }, 2000);
 
       });
@@ -69,10 +67,10 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
     $scope.findOne = function () {
       var splitPath = $location.path().split('/');
       var id = splitPath[splitPath.length - 1];
-      $scope.recurso = Recurso.get({ id: id });
+      $scope.aula = Aula.get({id: id});
     };
-
-    $scope.open = function (id) {
+    
+     $scope.open = function (id) {
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'myModalContent.html',
@@ -86,15 +84,15 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
       });
       modalInstance.result.then(function (id) {
         console.log(id);
-        Recurso.delete({ idRecurso: id });
-        $scope.message = "El recurso fue borrado con éxito";
+        Aula.delete({ id: id });
+        $scope.message = "El aula fue borrada con éxito";
         $scope.findAll();
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
-
-    $scope.getUser = function () {
+    
+     $scope.getUser = function () {
       new User().$getByToken(function (user) {
         $scope.authenticatedUser = user;
       }, function (err) {
@@ -103,6 +101,6 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
     }
 
   }
-
-
+  
+  
 ]);

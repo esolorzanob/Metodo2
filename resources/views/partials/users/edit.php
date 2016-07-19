@@ -118,5 +118,6 @@
     </div>
     <h3 class="error">{{error}}<h3>
 </form>
-<h1 class="error" ng-show="!show">{{message}}</h1>
+<p class="error" >{{error}}</h1>
+<p class="success">{{message}}</h1>
 </div>

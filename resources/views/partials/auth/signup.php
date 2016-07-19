@@ -1,5 +1,5 @@
 <div class="container" ng-controller="UserController">
-    <form name="loginForm"  ng-submit="createNew()"
+    <form name="loginForm" ng-controller="UserController" ng-submit="createNew()"
       class="form-horizontal" >
       <p>Por favor ingrese la información para la creación del usuario. Todos los campos son requeridos**</p>
       <br>

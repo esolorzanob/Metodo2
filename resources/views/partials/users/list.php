@@ -22,6 +22,7 @@
     <div class="container" ng-show="show">
         <h2> Lista de Usuarios</h2>
 <input type="text" placeholder="Buscar por nombre" ng-model="filtro.nombre"  />
+<input type="text" placeholder="Buscar por Apellido" ng-model="filtro.apellido1"  />
 <input type="text" placeholder="Buscar por email" ng-model="filtro.email"  />
         <select name="genero" ng-model="filtro.genero">
 			<option value="" selected disabled>Género</option>
@@ -50,7 +51,7 @@
         <th>Eliminar</th>
       </tr>
       <tr ng-repeat="user in users  | filter:filtro |  filter:search:strict ">
-          <td>{{user.id}}</td>
+          <td>{{user.idrecurso}}</td>
           <td>{{user.rol}}</td>
           <td>{{user.nombre}}</td> 
           <td>{{user.apellido1}}</td>
@@ -59,9 +60,11 @@
           <td>{{user.genero}}</td>
           <td>{{user.email}}</td>          
           <td class="opcionList"><a href="users/edit/{{user.id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-          <td class="opcionList"><a href="javascript:void(0)" ng-click="open(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          <td class="opcionList"><a href="javascript:void(0)" ng-click="open(user.id)"><i class="fa fa-trash error" aria-hidden="true"></i></a></td>
+       </tr>
     </table>
     <p class="success">{{message}}</p>
     </div>
-    <h1 class="error" ng-show="!show">{{message}}</h1>
+    <h1 class="error" ng-show="!show">{{error}}</h1>
+    
 </div>

@@ -1,0 +1,10 @@
+CREATE TABLE `test`.`aulas` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `numero` VARCHAR(45) NULL COMMENT '',
+  `edificio` VARCHAR(45) NULL COMMENT '',
+  `aireAcondicionado` VARCHAR(45) NULL COMMENT '',
+  `proyector` VARCHAR(45) NULL COMMENT '',
+  `computadora` VARCHAR(45) NULL COMMENT '',
+  `created_at` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '',
+  `updated_at` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');

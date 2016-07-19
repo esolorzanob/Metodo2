@@ -19,8 +19,8 @@
           
         </div>
         <div class="col-md-3">
-            <input type="password" id="password" ng-model="usuario.password"
-                   class="form-control" placeholder="">
+                <input type="password" id="password" ng-model="usuario.password"
+                    class="form-control" placeholder="">
         </div>
     </div>
     <div class="form-group">

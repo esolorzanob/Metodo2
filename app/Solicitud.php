@@ -3,21 +3,21 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
-class Recurso extends Model
+class Solicitud extends Model
 {
      /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'recursos';
+    protected $table = 'solicitudes';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'numeroSerie', 'descripcion', 'estado', 'comentarios', 'tipo'];
+    protected $fillable = ['solicitante', 'fecha_inicio', 'fecha_devolucion', 'recurso', 'aula', 'estado', 'recursoId'];
 
    
 }

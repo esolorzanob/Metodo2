@@ -1,15 +1,15 @@
-angular.module('RecursoService', []).factory('Recurso', ['$resource',
+angular.module('AulaService', []).factory('Aula', ['$resource',
   function ($resource) {
-    return $resource('/api/recurso/:id', {
+    return $resource('/api/aula/:id', {
       id: '@id',
-      recurso: '@recurso'
+      aula: '@aula'
     }, {
         update: {
           method: 'PUT'
         },
         updateAll: {
           method: 'POST',
-          url: 'api/recurso/updateAll'
+          url: 'api/aula/updateAll'
         }
       });
   }

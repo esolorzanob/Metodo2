@@ -8,10 +8,15 @@ angular.module('ResourceApp', [
   'MainController',  
   'UserController',
   'RecursoController',
+  'AulaController',
+  'SolicitudController',
   'RecursoService',
   'UserService',
+  'AulaService',
+  'SolicitudService',
   'ui.bootstrap',
-  'ModalInstanceController'
+  'ModalInstanceController',
+  'ModalInstanceController2'
   
 ]);
 

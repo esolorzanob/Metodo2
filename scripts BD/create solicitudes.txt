@@ -1,0 +1,10 @@
+CREATE TABLE `test`.`solicitudes` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `solicitante` VARCHAR(45) NULL COMMENT '',
+  `fecha_inicio` VARCHAR(45) NULL COMMENT '',
+  `fecha_devolucion` VARCHAR(45) NULL COMMENT '',
+  `recurso` VARCHAR(45) NULL COMMENT '',
+  `aula` VARCHAR(45) NULL COMMENT '',
+  `created_at` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '',
+  `updated_at` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00' COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');

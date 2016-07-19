@@ -1,8 +1,8 @@
 <?php namespace ResourceApp\Http\Controllers;
 use Illuminate\Http\Request;
 use ResourceApp\Http\Requests;
-use ResourceApp\Recurso;
-class RecursoController extends Controller
+use ResourceApp\Aula;
+class AulaController extends Controller
 {
     private $request;
     function __construct(Request $request)
@@ -16,8 +16,8 @@ class RecursoController extends Controller
      */
     public function index()
     {
-        $recursos = Recurso::all();
-        return $recursos;
+        $aulas = Aula::all();
+        return $aulas;
     }
     /**
      * Show the form for creating a new resource.
@@ -36,11 +36,11 @@ class RecursoController extends Controller
     public function store()
     {
         $input = $this->req->all();
-        $recurso = new Recurso($input);
-        if (!$recurso->save()) {
+        $aula = new Aula($input);
+        if (!$aula->save()) {
             abort(500, "Saving failed.");
         }
-        return $recurso;
+        return $aula;
     }
     /**
      * Display the specified resource.
@@ -50,7 +50,7 @@ class RecursoController extends Controller
      */
     public function show($id)
     {
-        return Recurso::find($id);
+        return Aula::find($id);
     }
     /**
      * Show the form for editing the specified resource.
@@ -70,24 +70,24 @@ class RecursoController extends Controller
      */
     public function update($id)
     {
-        $recurso = Recurso::find($id);
-        $recurso->nombre = $this->request->nombre('nombre');
-        if (!$recurso->save()) {
+        $aula = Aula::find($id);
+        $aula->nombre = $this->request->nombre('nombre');
+        if (!$aula->save()) {
             abort(500, "Saving failed");
         }
-        return $recurso;
+        return $aula;
     }
     
     public function updateAll()
     {
         $response = new \stdClass();
-        $recurso = Recurso::find($this->req->recurso['id']);   
-        $recurso->nombre = $this->req->recurso['nombre'];
-        $recurso->numeroSerie = $this->req->recurso['numeroSerie'];
-        $recurso->descripcion = $this->req->recurso['descripcion'];
-        $recurso->estado = $this->req->recurso['estado'];
-        $recurso->comentarios = $this->req->recurso['comentarios'];        
-         if (!$recurso->save()) {
+        $aula = Aula::find($this->req->aula['id']);   
+        $aula->numero = $this->req->aula['numero'];
+        $aula->edificio = $this->req->aula['edificio'];
+        $aula->aireAcondicionado = $this->req->aula['aireAcondicionado'];
+        $aula->proyector = $this->req->aula['proyector'];
+        $aula->computadora = $this->req->aula['computadora'];        
+         if (!$aula->save()) {
              $response->message = "Error al guardar información";
         }else{
             $response->message = "La información fue guardada con éxito";
@@ -103,6 +103,6 @@ class RecursoController extends Controller
      */
     public function destroy($id)
     {
-        return Recurso::destroy($id);
+        return Aula::destroy($id);
     }
 }

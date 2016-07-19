@@ -1,0 +1,2 @@
+ALTER TABLE `test`.`solicitudes` 
+ADD COLUMN `recursoId` VARCHAR(45) NULL COMMENT '' AFTER `recurso`;

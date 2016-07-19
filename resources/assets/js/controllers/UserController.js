@@ -1,5 +1,6 @@
 angular.module('UserController', []).controller('UserController', ['$scope', 'User', '$localStorage', '$location', '$uibModal', '$timeout',
   function ($scope, User, $localStorage, $location, $uibModal, $timeout) {
+     $("#wrapper").toggleClass("toggled");  
     //caracteres para crear password temporal
     var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     //Tamaño de password temporal
@@ -38,7 +39,8 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
 
     //Funcion para crear un nuevo usuario - Admin
     $scope.create = function () {
-
+      $scope.error = "";
+      $scope.message = "";
       if ($scope.usuario.password != $scope.usuario.passwordConfirmation) {
         $scope.error = "Las contraseñas no coinciden";
       } else if (!$scope.usuario.password.match(/[A-Z]/) || $scope.usuario.password.length < 8 || !$scope.usuario.password.match(/[\d]/)) {
@@ -85,7 +87,7 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
        $scope.getUser();
       var splitPath = $location.path().split('/');
       var userId = splitPath[splitPath.length - 1];
-      $scope.usuario = User.get({ userId: userId }, function (user) {
+      $scope.usuario = User.get({ userId: $scope.authenticatedUser.id }, function (user) {
         if ($scope.authenticatedUser.rol != "Admin"){
           $scope.show = false;
           $scope.message = "No esta autorizado para ver esta información."
@@ -103,7 +105,11 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
     //Funcion para editar usuario
     $scope.edit = function () {
       User.updateAll({ usuario: $scope.usuario }, function (response) {
-        $scope.error = response.message;
+        if (response.match(/error/i)){
+          $scope.error = response.message;
+        }else{
+          $scope.message = response.message;
+        }
         $timeout(function () {
           $location.path('users/list/');
         }, 2000);

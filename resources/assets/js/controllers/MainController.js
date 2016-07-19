@@ -6,6 +6,7 @@ angular.module('MainController', []).controller('MainController', ['$scope', '$l
      * @param route
      * @returns {boolean}
      */
+     $("#wrapper").addClass("toggled");      
     $scope.isActive = function (route) {
       return route === $location.path();
     };
