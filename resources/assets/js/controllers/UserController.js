@@ -84,7 +84,7 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
 
     //Funcion para traer todos los usuarios
     $scope.findAll = function () {
-       $scope.getUser();
+      $scope.getUser();
       var splitPath = $location.path().split('/');
       var userId = splitPath[splitPath.length - 1];
       $scope.usuario = User.get({ userId: $scope.authenticatedUser.id }, function (user) {
@@ -105,15 +105,20 @@ angular.module('UserController', []).controller('UserController', ['$scope', 'Us
     //Funcion para editar usuario
     $scope.edit = function () {
       User.updateAll({ usuario: $scope.usuario }, function (response) {
+
         if (response.match(/error/i)){
           $scope.error = response.message;
         }else{
           $scope.message = response.message;
         }
-        $timeout(function () {
-          $location.path('users/list/');
-        }, 2000);
 
+        $scope.error = response.message;
+        /*
+
+        $timeout(function () {
+          $location.path('users/list');
+        }, 2000);
+        */
       });
     }
 
