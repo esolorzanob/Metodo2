@@ -1,6 +1,9 @@
 angular.module('UserController', []).controller('UserController', ['$scope', 'User', '$localStorage', '$location', '$uibModal', '$timeout',
   function ($scope, User, $localStorage, $location, $uibModal, $timeout) {
-     $("#wrapper").toggleClass("toggled");  
+       $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     //caracteres para crear password temporal
     var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     //Tamaño de password temporal
