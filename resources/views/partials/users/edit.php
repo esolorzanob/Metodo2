@@ -80,7 +80,7 @@
                    <option>Masculino</option>
                    <option>Femenino</option>
                    <option>Otro</option>
-                   <option>No responde</option>
+                  
             </select>
         </div>
        

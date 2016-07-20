@@ -1,0 +1,11 @@
+CREATE TABLE `test`.`recursos` (
+  `id` INT(11) NOT NULL COMMENT '',
+  `nombre` VARCHAR(45) NULL COMMENT '',
+  `numeroSerie` VARCHAR(45) NULL COMMENT '',
+  `descripcion` VARCHAR(45) NULL COMMENT '',
+  `tipo` VARCHAR(45) NULL COMMENT '',
+  `estado` VARCHAR(45) NULL COMMENT '',
+  `cometarios` VARCHAR(45) NULL COMMENT '',
+  `created_at` TIMESTAMP NULL COMMENT '',
+  `updated_at` TIMESTAMP NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
