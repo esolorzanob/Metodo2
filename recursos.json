@@ -1,0 +1,12 @@
+[{"id":4, "nombre":"control de aire acondicionado", "numeroSerie":"16546231", "descripcion":"marca frio", "tipo":"Aire Acondicionado", "estado":"Disponible", "comentarios":""},
+ {"id":5, "nombre":"control de aire acondicionado", "numeroSerie":"65416421", "descripcion":"marca Triforce", "tipo":"Aire Acondicionado", "estado":"Disponible", "comentarios":""},
+ {"id":6, "nombre":"control de proyector", "numeroSerie":"65416421", "descripcion":"marca Samsung", "tipo":"Video Beam", "estado":"Disponible", "comentarios":""},
+ {"id":7, "nombre":"control de proyector", "numeroSerie":"864651465", "descripcion":"marca AOC", "tipo":"Video Beam", "estado":"Disponible", "comentarios":""},
+ {"id":8, "nombre":"teclado", "numeroSerie":"864651465", "descripcion":"marca logitech", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""},
+ {"id":9, "nombre":"mouse", "numeroSerie":"54168432", "descripcion":"marca logitech", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""},
+ {"id":10, "nombre":"monitor", "numeroSerie":"2316854", "descripcion":"marca AOC", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""},
+ {"id":13, "nombre":"Parlantes", "numeroSerie":"54542316", "descripcion":"Parlantes marca Altec", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""},
+ {"id":14, "nombre":"control de proyector", "numeroSerie":"214685423", "descripcion":"marca frio", "tipo":"Video Beam", "estado":"Disponible", "comentarios":""},
+ {"id":15, "nombre":"control de aire acondicionado", "numeroSerie":"456541347", "descripcion":"marca frio", "tipo":"Aire Acondicionado", "estado":"Disponible", "comentarios":""},
+ {"id":16, "nombre":"teclado", "numeroSerie":"6546321", "descripcion":"Logitech", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""},
+ {"id":17, "nombre":"parlantes", "numeroSerie":"42368432", "descripcion":"Marca Boss", "tipo":"Perif\u00e9ricos", "estado":"Disponible", "comentarios":""}]

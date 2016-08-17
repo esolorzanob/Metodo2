@@ -1,0 +1,13 @@
+[{"id":1, "numero":"2-10", "edificio":"Ciencias Medicas", "aireAcondicionado":"No", "proyector":"No", "computadora":"S\u00ed"},
+ {"id":2, "numero":"1-1", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":3, "numero":"3-5", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":4, "numero":"1-5", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"No", "computadora":"S\u00ed"},
+ {"id":5, "numero":"2-20", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":6, "numero":"3-10", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":7, "numero":"1-10", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":8, "numero":"2-3", "edificio":"Principal", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":9, "numero":"1-2", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":10, "numero":"1-10", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":11, "numero":"2-6", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":12, "numero":"2-20", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"},
+ {"id":13, "numero":"3-4", "edificio":"Ciencias Medicas", "aireAcondicionado":"S\u00ed", "proyector":"S\u00ed", "computadora":"S\u00ed"}]
