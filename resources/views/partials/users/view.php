@@ -5,11 +5,16 @@
       <br>
     
        <h2>Use el menú de la izquierda para navegar por las opciones<h2>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Para ver el menú, presione aquí</a>
+        <h4>Para ver el menú, presione el botón en la parte superior de la pantalla</h4>
  </div>      
   <div class="container" ng-show="usuario.rol != 'Admin'">
-      <h1>En construcción<i class="fa fa-truck" aria-hidden="true"></i></h1>
+      
+      <h1>Bienvenido {{usuario.nombre}}</h1>
+      <br>
+    
+       <h2>Use el menú de la izquierda para navegar por las opciones<h2>
+        <h4>Para ver el menú, presione el botón en la parte superior de la pantalla</h4>
   </div>
-  
+   
 </div>
   

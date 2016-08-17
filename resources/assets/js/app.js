@@ -10,10 +10,12 @@ angular.module('ResourceApp', [
   'RecursoController',
   'AulaController',
   'SolicitudController',
+  'MensajeController',
   'RecursoService',
   'UserService',
   'AulaService',
   'SolicitudService',
+  'MensajeService',
   'ui.bootstrap',
   'ModalInstanceController',
   'ModalInstanceController2'

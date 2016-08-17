@@ -3,7 +3,7 @@
     <div class="form-group">
          <div class="col-md-2">
                <i class="fa fa-list-ol icono" aria-hidden="true"></i>
-            <label>Numero:</label>
+            <label>Número:</label>
           
         </div>
         <div class="col-md-3">
@@ -46,7 +46,7 @@
     <div class="form-group">
          <div class="col-md-2">
                <i class="fa fa-video-camera icono" aria-hidden="true"></i>
-            <label>Proyector:</label>
+            <label>Video Beam:</label>
           
         </div>
         <div class="col-md-3">
@@ -67,6 +67,22 @@
         </div>
         <div class="col-md-3">
              <select name="compu" id="compu" ng-model="aula.computadora" 
+                   class="form-control" required>
+                   <option></option>
+                   <option>Sí</option>
+                   <option>No</option>
+                   
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+         <div class="col-md-2">
+               <i class="fa fa-desktop icono" aria-hidden="true"></i>
+            <label>Pantalla:</label>
+          
+        </div>
+        <div class="col-md-3">
+             <select name="compu" id="compu" 
                    class="form-control" required>
                    <option></option>
                    <option>Sí</option>

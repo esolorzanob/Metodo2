@@ -1,10 +1,14 @@
-angular.module('RecursoController', []).controller('RecursoController', ['$scope', '$location', '$routeParams', 'Recurso', 'User', '$uibModal', '$timeout',
-  function ($scope, $location, $routeParams, Recurso, User, $uibModal, $timeout) {
+angular.module('MensajeController', []).controller('MensajeController', ['$scope', '$location', '$routeParams', 'Mensaje', 'User', '$uibModal', '$timeout',
+  function ($scope, $location, $routeParams, Mensaje, User, $uibModal, $timeout) {
+      
     $scope.create = function () {
-      var recurso = new Recurso($scope.recurso);
-      recurso.$save(function (res) {
-        //  $location.path('recursos/view/' + res.id);
-        $scope.message = "El recurso se ha creado con éxito";
+      $scope.mensaje.idUsuario = $scope.authenticatedUser.id;
+      $scope.mensaje.usuario = $scope.authenticatedUser.nombre + " " + $scope.authenticatedUser.apellido1 + " " + $scope.authenticatedUser.apellido2;
+      $scope.mensaje.estado = "Nuevo"; 
+      var mensaje = new Mensaje($scope.mensaje);
+      mensaje.$save(function (res) {
+        //  $location.path('mensajes/view/' + res.id);
+        $scope.message = "El mensaje se ha enviado con éxito";
       }, function (err) {
         console.log(err);
       });
@@ -21,7 +25,7 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
 
         } else {
           $scope.show = true;
-          $scope.recursos = Recurso.query();
+          $scope.mensajes = Mensaje.query();
         }
 
       });
@@ -30,12 +34,12 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
     };
     
 
-    $scope.remove = function (recurso) {
-      recurso.$remove(function (res) {
+    $scope.remove = function (mensaje) {
+      mensaje.$remove(function (res) {
         if (res) {
-          for (var i in $scope.recursos) {
-            if ($scope.recursos[i] === recurso) {
-              $scope.recursos.splice(i, 1);
+          for (var i in $scope.mensajes) {
+            if ($scope.mensajes[i] === mensaje) {
+              $scope.mensajes.splice(i, 1);
             }
           }
         }
@@ -44,15 +48,16 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
       })
     };
 
-    $scope.update = function (recurso) {
-      recurso.$update(function (res) {
+    $scope.update = function (mensaje) {
+      mensaje.$update(function (res) {
       }, function (err) {
         console.log(err);
       });
     };
 
-    $scope.edit = function () {
-      Recurso.updateAll({ recurso: $scope.recurso }, function (response) {
+    $scope.updateAll = function () {
+      Mensaje.updateAll({ mensaje: $scope.mensaje }, function (response) {
+          console.log(response);
         if (response.message.match(/error/i)){
           $scope.error = response.message;
         }else{
@@ -60,7 +65,7 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
         }
         
         $timeout(function () {
-          $location.path('recurso/list/');
+          $location.path('mensaje/list/');
         }, 2000);
 
       });
@@ -69,7 +74,7 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
     $scope.findOne = function () {
       var splitPath = $location.path().split('/');
       var id = splitPath[splitPath.length - 1];
-      $scope.recurso = Recurso.get({ id: id });
+      $scope.mensaje = Mensaje.get({ id: id });
     };
 
     $scope.open = function (id) {
@@ -86,8 +91,8 @@ angular.module('RecursoController', []).controller('RecursoController', ['$scope
       });
       modalInstance.result.then(function (id) {
         console.log(id);
-        Recurso.delete({ idRecurso: id });
-        $scope.message = "El recurso fue borrado con éxito";
+        Mensaje.delete({ idMensaje: id });
+        $scope.message = "El mensaje fue borrado con éxito";
         $scope.findAll();
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());

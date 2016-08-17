@@ -38,12 +38,14 @@ Route::get('/api/user/getByEmail', 'UserController@getByEmail');
 Route::post('/api/recurso/updateAll', 'RecursoController@updateAll');
 Route::post('/api/aula/updateAll', 'AulaController@updateAll');
 Route::post('/api/solicitud/updateAll', 'SolicitudController@updateAll');
+Route::post('/api/mensaje/updateAll', 'MensajeController@updateAll');
 // Getting RESTful
 
 Route::resource('/api/user', 'UserController');
 Route::resource('api/recurso', 'RecursoController');
 Route::resource('api/aula', 'AulaController');
 Route::resource('api/solicitud', 'SolicitudController');
+Route::resource('api/mensaje', 'MensajeController');
 // Catch all undefined routes. Always gotta stay at the bottom since order of routes matters.
 Route::any('{undefinedRoute}', function ($undefinedRoute) {
     return view('layout');

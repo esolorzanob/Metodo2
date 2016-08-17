@@ -33,14 +33,15 @@
                 
                 <li ng-if="authenticatedUser == null" ng-class="{active:isActive('/auth/login')}"><a href="/auth/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Ingresar</a></li>
                 <li ng-if="authenticatedUser != null" ng-class="{active:isActive('/users/view/' + authenticatedUser.id)}"><a ng-href="/users/view/{{authenticatedUser.id}}">{{authenticatedUser.nombre}}</a></li>
-                <li ng-if="authenticatedUser != null" ng-click="logout()"><a ng-href="#">Log out</a></li>
+                <li ng-if="authenticatedUser != null" ><a href="#menu-toggle" id="menu-toggle">Menú</a></li>
+                <li ng-if="authenticatedUser != null" ng-click="logout()"><a ng-href="#">Salir</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div id="wrap">
-     <div id="wrapper">
+     <div id="wrapper" class="toggled">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper" >
@@ -48,31 +49,31 @@
                 <li class="sidebar-brand">                    
                         Menú de opciones                    
                 </li>
-                <li class="sidebar-subBrand">
+                <li class="sidebar-subBrand" ng-show="authenticatedUser.rol == 'Admin'">
                    Usuarios
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/users/create">Crear</a>
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/users/list">Ver</a>
                 </li>
-               <li class="sidebar-subBrand">
+               <li class="sidebar-subBrand" ng-show="authenticatedUser.rol == 'Admin'">
                    Recursos
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/recurso/create">Crear</a>
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/recurso/list">Ver</a>
                 </li>
-                 <li class="sidebar-subBrand">
+                 <li class="sidebar-subBrand" ng-show="authenticatedUser.rol == 'Admin'">
                    Aulas
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/aula/create">Crear</a>
                 </li>
-                <li>
+                <li ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/aula/list">Ver</a>
                 </li>
                  <li class="sidebar-subBrand">
@@ -84,8 +85,14 @@
                 <li>
                     <a href="/solicitud/list">Ver</a>
                 </li>
-                 <li class="sidebar-subBrand">
+                 <li class="sidebar-subBrand" ng-show="authenticatedUser.rol == 'Admin'">
                     <a href="/solicitud/reportes">Reportes</a>
+                </li>
+                <li class="sidebar-subBrand" ng-show="authenticatedUser.rol == 'Admin'">
+                    <a href="/mensaje/list">Mensajes</a>
+                </li>
+                 <li class="sidebar-subBrand" ng-show="authenticatedUser.rol != 'Admin'">
+                    <a href="/mensaje/create">Mensajes</a>
                 </li>
             </ul>
         </div>
@@ -116,8 +123,11 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-    });
+    });    
+     
     </script>
+   
+   
 </body>
 
 </html>

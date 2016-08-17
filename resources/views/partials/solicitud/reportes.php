@@ -17,7 +17,7 @@
             </div>
             
             <div class="col-md-3">
-                <button class="btn btn-primary" ng-click="imprimirReporte()">Imprimir</button> 
+                <button class="btn btn-primary" ng-click="imprimirReporte()">Guardar en PDF</button> 
             </div>
       </div>
       

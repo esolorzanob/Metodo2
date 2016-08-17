@@ -1,0 +1,10 @@
+CREATE TABLE `test`.`mensajes` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `usuario` VARCHAR(45) NULL COMMENT '',
+  `idUsuario` VARCHAR(45) NULL COMMENT '',
+  `mensaje` VARCHAR(500) NULL COMMENT '',
+  `created_at` TIMESTAMP NULL COMMENT '',
+  `updated_at` TIMESTAMP NULL COMMENT '',
+  `estado` VARCHAR(45) NULL COMMENT '',
+  `acerca_de` VARCHAR(100) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');

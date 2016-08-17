@@ -1,8 +1,8 @@
 <?php namespace ResourceApp\Http\Controllers;
 use Illuminate\Http\Request;
 use ResourceApp\Http\Requests;
-use ResourceApp\Aula;
-class AulaController extends Controller
+use ResourceApp\Mensaje;
+class MensajeController extends Controller
 {
     private $request;
     function __construct(Request $request)
@@ -16,8 +16,8 @@ class AulaController extends Controller
      */
     public function index()
     {
-        $aulas = Aula::all();
-        return $aulas;
+        $mensajes = Mensaje::all();
+        return $mensajes;
     }
     /**
      * Show the form for creating a new resource.
@@ -36,11 +36,11 @@ class AulaController extends Controller
     public function store()
     {
         $input = $this->req->all();
-        $aula = new Aula($input);
-        if (!$aula->save()) {
+        $mensaje = new Mensaje($input);
+        if (!$mensaje->save()) {
             abort(500, "Saving failed.");
         }
-        return $aula;
+        return $mensaje;
     }
     /**
      * Display the specified resource.
@@ -50,7 +50,7 @@ class AulaController extends Controller
      */
     public function show($id)
     {
-        return Aula::find($id);
+        return Mensaje::find($id);
     }
     /**
      * Show the form for editing the specified resource.
@@ -70,27 +70,23 @@ class AulaController extends Controller
      */
     public function update($id)
     {
-        $aula = Aula::find($id);
-        $aula->nombre = $this->req->nombre('nombre');
-        if (!$aula->save()) {
+        $mensaje = Mensaje::find($id);
+        $mensaje->nombre = $this->req->nombre('nombre');
+        if (!$mensaje->save()) {
             abort(500, "Saving failed");
         }
-        return $aula;
+        return $mensaje;
     }
     
     public function updateAll()
     {
         $response = new \stdClass();
-        $aula = Aula::find($this->req->aula['id']);   
-        $aula->numero = $this->req->aula['numero'];
-        $aula->edificio = $this->req->aula['edificio'];
-        $aula->aireAcondicionado = $this->req->aula['aireAcondicionado'];
-        $aula->proyector = $this->req->aula['proyector'];
-        $aula->computadora = $this->req->aula['computadora'];        
-         if (!$aula->save()) {
+        $mensaje = Mensaje::find($this->req->mensaje['id']);  
+        $mensaje->estado = "Leído";              
+         if (!$mensaje->save()) {
              $response->message = "Error al guardar información";
         }else{
-            $response->message = "La información fue guardada con éxito";
+            $response->message = "El mensaje ha sido marcado como leído";
                       
         }
          return json_encode($response); 
@@ -103,6 +99,6 @@ class AulaController extends Controller
      */
     public function destroy($id)
     {
-        return Aula::destroy($id);
+        return Mensaje::destroy($id);
     }
 }

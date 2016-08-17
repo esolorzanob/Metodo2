@@ -52,7 +52,7 @@ angular.module('AulaController', []).controller('AulaController', ['$scope', '$l
     
      $scope.edit = function () {
       Aula.updateAll({ aula: $scope.aula }, function (response) {
-       if (response.match(/error/i)){
+       if (response.message.match(/error/i)){
           $scope.error = response.message;
         }else{
           $scope.message = response.message;

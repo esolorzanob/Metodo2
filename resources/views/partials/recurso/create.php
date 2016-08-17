@@ -29,8 +29,8 @@
           
         </div>
         <div class="col-md-3">
-            <input type="text" id="descripcion" ng-model="recurso.descripcion"
-                   class="form-control" placeholder="descripcion">
+             <textarea id="descripcion" name="mensaje" cols="100" rows="4" ng-model="recurso.descripcion"  class="form-control" placeholder="descripcion"></textarea>
+           
         </div>
     </div>
     <div class="form-group">

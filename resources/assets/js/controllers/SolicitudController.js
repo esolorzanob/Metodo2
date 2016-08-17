@@ -3,11 +3,12 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
         $scope.showReport = false;
         $scope.showReportDia = false;
         $scope.solicitudes = [];
-        $scope.meses = ["Enero", "Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
+        $scope.guardadas = [];
+        $scope.meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
         var mesActual = new Date();
         mesActual = mesActual.getMonth();
-        $scope.mesActual = $scope.meses[parseInt(mesActual)]; 
-        
+        $scope.mesActual = $scope.meses[parseInt(mesActual)];
+
         $scope.create = function () {
             for (var i = 0; i < $scope.solicitudes.length; i++) {
                 var solicitud = new Solicitud($scope.solicitudes[i]);
@@ -26,9 +27,16 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
             var splitPath = $location.path().split('/');
             var userId = splitPath[splitPath.length - 1];
             $scope.usuario = User.get({ userId: $scope.authenticatedUser.id }, function (user) {
-                if ($scope.authenticatedUser.rol != "Admin") {
-                    $scope.show = false;
-                    $scope.message = "No esta autorizado para ver esta información."
+                if (user.rol != "Admin") {
+                    $scope.temporal = Solicitud.query({}, function (tempArray) {
+                        for (var i = 0; i < tempArray.length; i++) {
+                            console.log(tempArray[i]);
+                            if (tempArray[i].solicitante == user.nombre) {
+                                $scope.guardadas.push(tempArray[i]);
+                            }
+                        }
+                        $scope.show = true;
+                    });
 
                 } else {
                     $scope.show = true;
@@ -336,7 +344,7 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
         }
 
         $scope.reportePorSemana = function (dia) {
-             if (dia == 1) {
+            if (dia == 1) {
                 $scope.diaActual = "Lunes";
             }
             if (dia == 2) {
@@ -404,35 +412,35 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
             if (periferico == tipoMenor) {
                 $scope.tipoMenor = "Periférico";
             }
-            
+
             $scope.porcentajeAire = (aire / porDia.length * 100).toFixed(2) + "%";
-            $scope.porcentajeVideo = (proyector / porDia.length * 100).toFixed(2)  + "%";
-            $scope.porcentajePeri = (periferico / porDia.length * 100).toFixed(2)  + "%";
-            
+            $scope.porcentajeVideo = (proyector / porDia.length * 100).toFixed(2) + "%";
+            $scope.porcentajePeri = (periferico / porDia.length * 100).toFixed(2) + "%";
+
 
             $scope.showReportDia = true;
 
 
         }
-        
-        $scope.imprimirReporte = function(){
-             html2canvas(document.getElementById('reporte'), {
-            onrendered: function (canvas) {
-                var data = canvas.toDataURL();
-                var docDefinition = {
-                    content: [{
-                        image: data,
-                        width: 500,
-                    }]
-                };
-                var newDate = new Date();
-               var nombreReporte = newDate.getDate() +"/"+ (newDate.getMonth()+1) + "/" + newDate.getFullYear();
-               
-               pdfMake.createPdf(docDefinition).download(nombreReporte + " reporte.pdf");
-            }
-        });
-            
-            
+
+        $scope.imprimirReporte = function () {
+            html2canvas(document.getElementById('reporte'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500,
+                        }]
+                    };
+                    var newDate = new Date();
+                    var nombreReporte = newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear();
+
+                    pdfMake.createPdf(docDefinition).download(nombreReporte + " reporte.pdf");
+                }
+            });
+
+
         }
 
     }

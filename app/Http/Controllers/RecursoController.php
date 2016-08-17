@@ -71,7 +71,7 @@ class RecursoController extends Controller
     public function update($id)
     {
         $recurso = Recurso::find($id);
-        $recurso->nombre = $this->request->nombre('nombre');
+        $recurso->nombre = $this->req->nombre('nombre');
         if (!$recurso->save()) {
             abort(500, "Saving failed");
         }
