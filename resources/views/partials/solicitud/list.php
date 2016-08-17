@@ -58,8 +58,7 @@
         <th>Fecha de Devolución</th>
         <th>Recurso</th>
         <th>Aula</th>     
-        <th>Estado</th>
-        <th>Aceptar</th>
+        <th>Estado</th>       
         <th>Rechazar</th>
         
       </tr>
@@ -70,9 +69,8 @@
           <td>{{solicitud.fecha_devolucion}}</td> 
           <td><a href="/recurso/edit/{{solicitud.recursoId}}">{{solicitud.recurso}}</a></td>
           <td>{{solicitud.aula}}</td>
-          <td>{{solicitud.estado}}</td>           
-          <td class="opcionList" ><a href="javascript:void(0)" ng-click="aceptar(solicitud)" ng-show="solicitud.estado == 'Pendiente'"><i class="fa fa-check" aria-hidden="true"></i></a></td>
-          <td class="opcionList" ><a href="javascript:void(0)" ng-click="rechazar(solicitud)" ng-show="solicitud.estado == 'Pendiente'"><i class="fa fa-times error" aria-hidden="true"></i></a></td>         
+          <td>{{solicitud.estado}}</td>
+          <td class="opcionList" ><a href="javascript:void(0)" ng-click="rechazar(solicitud)" ng-show="solicitud.estado != 'Rechazada'" ><i class="fa fa-times error" aria-hidden="true"></i></a></td>         
           
        </tr>
     </table>

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Meto2App</title>
     <script type="application/javascript" src="<% elixir('js/all.js') %>"></script>
+    <script src="html2canvas.js"></script>
+    <script src='pdfmake.min.js'></script>
+ 	<script src='vfs_fonts.js'></script>
     <link rel="stylesheet" href="/css/app.css"/>
     <link rel="stylesheet" href="<% elixir('css/all.css') %>"/>
     <link rel="stylesheet" href="css/demo.css">
@@ -80,6 +83,9 @@
                 </li>
                 <li>
                     <a href="/solicitud/list">Ver</a>
+                </li>
+                 <li class="sidebar-subBrand">
+                    <a href="/solicitud/reportes">Reportes</a>
                 </li>
             </ul>
         </div>

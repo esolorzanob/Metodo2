@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use ResourceApp\Http\Requests;
 use ResourceApp\Solicitud;
+use Mail;
 class SolicitudController extends Controller
 {
     private $request;
@@ -36,10 +37,28 @@ class SolicitudController extends Controller
     public function store()
     {
         $input = $this->req->all();
+        
         $solicitud = new Solicitud($input);
+        
         if (!$solicitud->save()) {
             abort(500, "Saving failed.");
+        }        
+       
+         $data = array('input' => $input);
+        if (Mail::send('solicitudCreate-view', ['input' => $input], function($message) use ($data)
+        {
+        $message->to('esteban.solorzanolds@gmail.com', 'Admin')->subject('Solicitud Aceptada');
+        })){
+            $response = new \stdClass();
+            $response->message = "Su solicitud fue aceptada";
+           return json_encode($response); 
+        }else {
+           $response = new \stdClass();
+            $response->message = "Se produjo un error al aceptar su solicitud";
+           return json_encode($response); 
         }
+        
+        
         return $solicitud;
     }
     /**
@@ -95,6 +114,19 @@ class SolicitudController extends Controller
             $response->message = "La información fue guardada con éxito";
                       
         }
+        if ($solicitud->estado == "Rechazada"){
+           $data = array('solicitud' => $solicitud);
+        if (Mail::send('solicitudRechazada-view', ['solicitud' => $solicitud], function($message) use ($data)
+        {
+        $message->to('esteban.solorzanolds@gmail.com', 'Admin')->subject('Solicitud Rechazada');
+        })){
+           
+        }else {
+          
+        }  
+        }
+         
+        
          return json_encode($response); 
     }   
     /**

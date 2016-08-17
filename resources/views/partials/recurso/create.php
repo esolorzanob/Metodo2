@@ -59,9 +59,9 @@
                    class="form-control" required>
                    <option></option>
                    <option>Aire Acondicionado</option>
-                   <option>Computadora</option>
-                   <option>Proyector</option>
-                   <option>Otro</option>                     
+                   <option>Periféricos</option>
+                   <option>Video Beam</option>
+                            
             </select>
         </div>
     </div>

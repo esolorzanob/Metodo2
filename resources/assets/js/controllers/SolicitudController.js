@@ -1,13 +1,19 @@
 angular.module('SolicitudController', []).controller('SolicitudController', ['$scope', '$location', '$routeParams', 'Solicitud', 'User', '$uibModal', '$timeout', 'Aula', 'Recurso',
     function ($scope, $location, $routeParams, Solicitud, User, $uibModal, $timeout, Aula, Recurso) {
-
+        $scope.showReport = false;
+        $scope.showReportDia = false;
         $scope.solicitudes = [];
+        $scope.meses = ["Enero", "Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
+        var mesActual = new Date();
+        mesActual = mesActual.getMonth();
+        $scope.mesActual = $scope.meses[parseInt(mesActual)]; 
+        
         $scope.create = function () {
             for (var i = 0; i < $scope.solicitudes.length; i++) {
                 var solicitud = new Solicitud($scope.solicitudes[i]);
                 solicitud.$save(function (res) {
                     //  $location.path('solicituds/view/' + res.id);
-                    $scope.message = "El solicitud se ha creado con éxito";
+                    $scope.message = "La solicitud se ha creado con éxito";
                 }, function (err) {
                     console.log(err);
                 });
@@ -78,24 +84,22 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
                 if (Date.parse($scope.solicitud.fecha_inicio) >= Date.parse($scope.guardadas[i].fecha_inicio) && Date.parse($scope.solicitud.fecha_inicio) <= Date.parse($scope.guardadas[i].fecha_devolucion)) {
                     var recursoId = $.grep($scope.recursos, function (e) { return e.id == $scope.guardadas[i].recursoId; });
                     $scope.recursos = $scope.recursos.map(function (e) { if (e.id == recursoId[0].id) { e.estado = "Prestado" } return e; });
-                    
+
                 }
             }
-            console.log($scope.recursos);
+
             for (var i = 0; i < $scope.recursos.length; i++) {
                 if ($scope.recursos[i].estado == "Disponible") {
                     if ($scope.solicitud.aula.aireAcondicionado == "Sí" && $scope.recursos[i].tipo == "Aire Acondicionado") {
                         $scope.disponibles.push($scope.recursos[i]);
                     }
-                    if ($scope.solicitud.aula.computadora == "Sí" && $scope.recursos[i].tipo == "Computadora") {
+                    if ($scope.solicitud.aula.computadora == "Sí" && $scope.recursos[i].tipo == "Periféricos") {
                         $scope.disponibles.push($scope.recursos[i]);
                     }
-                    if ($scope.solicitud.aula.proyector == "Sí" && $scope.recursos[i].tipo == "Proyector") {
+                    if ($scope.solicitud.aula.proyector == "Sí" && $scope.recursos[i].tipo == "Video Beam") {
                         $scope.disponibles.push($scope.recursos[i]);
                     }
-                    if ($scope.recursos[i].tipo == "Otro") {
-                        $scope.disponibles.push($scope.recursos[i]);
-                    }
+
                 }
 
             }
@@ -112,7 +116,7 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
             solicitud.recurso = $scope.solicitud.recurso.nombre;
             solicitud.recursoId = $scope.solicitud.recurso.id;
             solicitud.aula = $scope.solicitud.aula.numero;
-            solicitud.estado = "Pendiente";
+            solicitud.estado = "Aceptada";
             solicitud.edificio = $scope.edificio;
             $scope.solicitudes.push(solicitud);
             $scope.solicitud = {};
@@ -148,7 +152,7 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
         $scope.findOne = function () {
             var splitPath = $location.path().split('/');
             var id = splitPath[splitPath.length - 1];
-            $scope.solicitud = Solicitud.get({ id: id },function(solicitud){
+            $scope.solicitud = Solicitud.get({ id: id }, function (solicitud) {
                 $scope.solicitud.fecha_inicio = new Date(solicitud.fecha_inicio);
                 $scope.solicitud.fecha_devolucion = new Date(solicitud.fecha_devolucion);
             });
@@ -167,7 +171,7 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
                 }
             });
             modalInstance.result.then(function (solicitud) {
-                solicitud.estado = "Aceptada";                
+                solicitud.estado = "Aceptada";
                 Solicitud.updateAll({ solicitud: solicitud });
                 $scope.message = "La solicitud fue aceptada";
                 $scope.findAll();
@@ -175,8 +179,8 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
-        
-         $scope.rechazar = function (solicitud) {
+
+        $scope.rechazar = function (solicitud) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'myModalContent2.html',
@@ -189,7 +193,7 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
                 }
             });
             modalInstance.result.then(function (solicitud) {
-                solicitud.estado = "Rechazada";                
+                solicitud.estado = "Rechazada";
                 Solicitud.updateAll({ solicitud: solicitud });
                 $scope.error = "La solicitud fue rechazada";
                 $scope.findAll();
@@ -204,6 +208,231 @@ angular.module('SolicitudController', []).controller('SolicitudController', ['$s
             }, function (err) {
                 console.log(err);
             });
+        }
+
+
+        $scope.reporteInicial = function () {
+            $scope.numeroTotal = 0;
+            var lunes = 0;
+            var martes = 0
+            var miercoles = 0;
+            var jueves = 0
+            var viernes = 0;
+            var sabado = 0
+            var aire = 0;
+            var proyector = 0;
+            var periferico = 0;
+            var mesActual = new Date();
+            mesActual = mesActual.getMonth();
+
+            for (var i = 0; i < $scope.guardadas.length; i++) {
+                var fecha = new Date($scope.guardadas[i].fecha_inicio);
+                var mes = fecha.getMonth();
+                if (mes = mesActual) {
+                    $scope.numeroTotal++;
+                }
+
+
+                var dia = fecha.getDay();
+                if (dia == 1) {
+                    lunes++;
+                }
+                if (dia == 2) {
+                    martes++;
+                }
+                if (dia == 3) {
+                    miercoles++;
+                }
+                if (dia == 4) {
+                    jueves++;
+                }
+                if (dia == 5) {
+                    viernes++;
+                }
+                if (dia == 6) {
+                    sabado++;
+                }
+
+
+                var tipo = $scope.guardadas[i].recurso;
+                if (tipo.match(/aire/)) {
+                    aire++;
+                } else if (tipo.match(/proyector/)) {
+                    proyector++;
+                } else {
+                    periferico++;
+                }
+
+            }
+            var mayor = Math.max(lunes, martes, miercoles, jueves, viernes, sabado);
+
+            if (lunes == mayor) {
+                $scope.mayorSolicitud = "Lunes";
+            }
+
+            if (martes == mayor) {
+                $scope.mayorSolicitud = "Martes";
+            }
+            if (miercoles == mayor) {
+                $scope.mayorSolicitud = "Miércoles";
+            }
+            if (jueves == mayor) {
+                $scope.mayorSolicitud = "Jueves";
+            }
+            if (viernes == mayor) {
+                $scope.mayorSolicitud = "Viernes";
+            }
+            if (sabado == mayor) {
+                $scope.mayorSolicitud = "Sábado";
+            }
+
+            var menor = Math.min(lunes, martes, miercoles, jueves, viernes, sabado);
+
+            if (lunes == menor) {
+                $scope.menorSolicitud = "Lunes";
+            }
+
+            if (martes == menor) {
+                $scope.menorSolicitud = "Martes";
+            }
+            if (miercoles == menor) {
+                $scope.menorSolicitud = "Miércoles";
+            }
+            if (jueves == menor) {
+                $scope.menorSolicitud = "Jueves";
+            }
+            if (viernes == menor) {
+                $scope.menorSolicitud = "Viernes";
+            }
+            if (sabado == menor) {
+                $scope.menorSolicitud = "Sábado";
+            }
+
+            var tipoMenor = Math.min(aire, proyector, periferico);
+            var tipoMayor = Math.max(aire, periferico, proyector);
+            if (aire == tipoMayor) {
+                $scope.tipoMayor = "Aire Acondicionado";
+            }
+            if (proyector == tipoMayor) {
+                $scope.tipoMayor = "Video Beam";
+            }
+            if (periferico == tipoMayor) {
+                $scope.tipoMayor = "Periférico";
+            }
+
+            if (aire == tipoMenor) {
+                $scope.tipoMenor = "Aire Acondicionado";
+            }
+            if (proyector == tipoMenor) {
+                $scope.tipoMenor = "Video Beam";
+            }
+            if (periferico == tipoMenor) {
+                $scope.tipoMenor = "Periférico";
+            }
+
+            $scope.showReport = true;
+
+
+        }
+
+        $scope.reportePorSemana = function (dia) {
+             if (dia == 1) {
+                $scope.diaActual = "Lunes";
+            }
+            if (dia == 2) {
+                $scope.diaActual = "Martes";
+            }
+            if (dia == 3) {
+                $scope.diaActual = "Miércoles";
+            }
+            if (dia == 4) {
+                $scope.diaActual = "Jueves";
+            }
+            if (dia == 5) {
+                $scope.diaActual = "Viernes";
+            }
+            if (dia == 6) {
+                $scope.diaActual = "Sábado";
+            }
+            $scope.showReport = false;
+            var porDia = [];
+            for (var i = 0; i < $scope.guardadas.length; i++) {
+                var fecha = new Date($scope.guardadas[i].fecha_inicio);
+                var day = fecha.getDay();
+                if (day == dia) {
+                    porDia.push($scope.guardadas[i]);
+                }
+            }
+
+            $scope.numeroTotal = porDia.length;
+
+            var aire = 0;
+            var proyector = 0;
+            var periferico = 0;
+
+            for (var i = 0; i < porDia.length; i++) {
+
+                var tipo = porDia[i].recurso;
+                if (tipo.match(/aire/)) {
+                    aire++;
+                } else if (tipo.match(/proyector/)) {
+                    proyector++;
+                } else {
+                    periferico++;
+                }
+
+            }
+
+            var tipoMenor = Math.min(aire, proyector, periferico);
+            var tipoMayor = Math.max(aire, periferico, proyector);
+            if (aire == tipoMayor) {
+                $scope.tipoMayor = "Aire Acondicionado";
+            }
+            if (proyector == tipoMayor) {
+                $scope.tipoMayor = "Video Beam";
+            }
+            if (periferico == tipoMayor) {
+                $scope.tipoMayor = "Periférico";
+            }
+
+            if (aire == tipoMenor) {
+                $scope.tipoMenor = "Aire Acondicionado";
+            }
+            if (proyector == tipoMenor) {
+                $scope.tipoMenor = "Video Beam";
+            }
+            if (periferico == tipoMenor) {
+                $scope.tipoMenor = "Periférico";
+            }
+            
+            $scope.porcentajeAire = (aire / porDia.length * 100).toFixed(2) + "%";
+            $scope.porcentajeVideo = (proyector / porDia.length * 100).toFixed(2)  + "%";
+            $scope.porcentajePeri = (periferico / porDia.length * 100).toFixed(2)  + "%";
+            
+
+            $scope.showReportDia = true;
+
+
+        }
+        
+        $scope.imprimirReporte = function(){
+             html2canvas(document.getElementById('reporte'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500,
+                    }]
+                };
+                var newDate = new Date();
+               var nombreReporte = newDate.getDate() +"/"+ (newDate.getMonth()+1) + "/" + newDate.getFullYear();
+               
+               pdfMake.createPdf(docDefinition).download(nombreReporte + " reporte.pdf");
+            }
+        });
+            
+            
         }
 
     }

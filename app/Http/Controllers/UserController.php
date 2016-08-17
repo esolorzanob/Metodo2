@@ -165,7 +165,7 @@ class UserController extends Controller
         $data = array('pass' => $pass);
         if (Mail::send('password-view', ['pass' => $pass], function($message) use ($data)
         {
-        $message->to('esolorzano@renovatiocloud.com', 'Admin')->subject('Password Reset');
+        $message->to('esteban.solorzanolds@gmail.com', 'Admin')->subject('Password Reset');
         })){
             $response = new \stdClass();
             $response->message = "La contraseña temporal se ha enviado a su correo";
